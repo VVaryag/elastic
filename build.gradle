@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    implementation 'org.mongodb:mongodb-driver:3.3.0'
+    implementation 'commons-net:commons-net:3.8.0'
+}
+
+test {
+    useJUnitPlatform()
+}
