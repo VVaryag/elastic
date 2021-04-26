@@ -13,15 +13,14 @@ public class FtpController {
     private final int FTP_PORT = 21;
 
     private ArrayList<String> nameFiles;
-    private   FTPClient ftpClient = new FTPClient();
+    private FTPClient ftpClient = new FTPClient();
+
     public FtpController(ArrayList<String> nameFiles) {
         this.nameFiles = nameFiles;
     }
 
     public void getFiles() {
-
         try {
-
             ftpClient.connect(FTP_ADDRESS, FTP_PORT);
             ftpClient.login(FTP_USER, FTP_PASS);
             ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
@@ -32,11 +31,11 @@ public class FtpController {
     }
 
     private void downloadFiles() {
-       OutputStream outputStream;
+        OutputStream outputStream;
         File downloadFile;
-
         try {
-          String name = "one.txt";
+            for (String name : nameFiles
+            ) {
                 downloadFile = new File(name);
                 System.out.println(name);
                 outputStream = new FileOutputStream(downloadFile);
@@ -48,6 +47,7 @@ public class FtpController {
                 }
 
                 outputStream.close();
+            }
 
         } catch (IOException e) {
             e.printStackTrace();
